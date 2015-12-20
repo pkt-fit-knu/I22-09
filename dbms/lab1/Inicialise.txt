@@ -12,6 +12,7 @@ CREATE TABLE users
 
   CONSTRAINT users_pkey PRIMARY KEY (u_id)
 );
+
 CREATE TABLE listofstaff
 (
 
@@ -28,6 +29,7 @@ CREATE TABLE listofstaff
   CONSTRAINT listofstaff_u_id_fkey FOREIGN KEY (u_id)
  REFERENCES users (u_id)
 );
+
 CREATE TABLE schedule
 (
 
@@ -41,6 +43,7 @@ CREATE TABLE schedule
 
   CONSTRAINT schedule_l_id_fkey FOREIGN KEY (l_id)
  REFERENCES listofstaff (l_id));
+
 CREATE TABLE connector
 (
 
@@ -53,6 +56,7 @@ CREATE TABLE connector
 
   CONSTRAINT connector_u_id_fkey FOREIGN KEY (u_id)
       REFERENCES users (u_id));
+
 CREATE TABLE publications
 (
   p_id integer NOT NULL,
