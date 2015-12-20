@@ -1,16 +1,9 @@
 <!doctype html>
-<html lang="en">
+<html>
 <head>
 	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
-
-	<meta name="apple-mobile-web-app-capable" content="yes">
-	<meta name="mobile-web-app-capable" content="yes">
-
 	<title>FlappyJS</title>
-
 	<script src="sprite.js"></script>
-
 	<style>
 	canvas {
 		display: block;
@@ -24,11 +17,6 @@
 	</style>
 </head>
 <body>
-<noscript>
-<p>For full functionality of this page it is necessary to enable JavaScript.
-Here are the <a href="http://www.enable-javascript.com/" target="_blank">
-instructions how to enable JavaScript in your web browser</a>.</p>
-</noscript>
 <script>
 
 var
@@ -42,10 +30,9 @@ height,
 
 fgpos = 0,
 frames = 0,
-score = 0, // начальное количество очков
+score = 0, 
 best = localStorage.getItem("best") || 0,
 
-// State vars //
 
 currentstate,
 states = {
@@ -72,52 +59,43 @@ bird = {//птица
 
 	gravity: 0.25,//гравитация для птицы
 	_jump: 4.6,//на сколько атица будет подниматся
-
-// прыжок и полет атицы
 	 
-	/**
-	 * Makes the bird "flap" and jump
-	 */
+	//падение и прыжки птицы
+	
 	jump: function() {
 		this.velocity = -this._jump;
 	},
-	//анимация спрайта атицы
 
-	/**
-	 * Update sprite animation and position of bird
-	 */
+	//обновление спрайтов,анимациии и позиции птицы
+	
 	update: function() {
+
 		//движения крылбями вызов спрайтов 0,1,2,1
-		// make sure animation updates and plays faster in gamestate
 		var n = currentstate === states.Splash ? 10 : 5;
 		this.frame += frames % n === 0 ? 1 : 0;
 		this.frame %= this.animation.length;
 
-		// in splash state make bird hover up and down and set
-		// rotation to zero
 		//движение птицы на месте в верх и вниз
 		if (currentstate === states.Splash) {
 
 			this.y = height - 280 + 5*Math.cos(frames/10);
 			this.rotation = 0;
 			//ограничение движения и добав гравитации
-		} else { // game and score state //
+		} else { 
 
 			this.velocity += this.gravity;
 			this.y += this.velocity;
 
-			// change to the score state when bird touches the ground
+			// изменение оков при крсании птицы земли
 			if (this.y >= height - s_fg.height-10) {
 				this.y = height - s_fg.height-10;
 				if (currentstate === states.Game) {
 					currentstate = states.Score;
 				}
-				// sets velocity to jump speed for correct rotation
+				// сеорость прыжка
 				this.velocity = this._jump;
 			}
 
-			// when bird lack upward momentum increment the rotation
-			// angle
 			//действие при косании земли и анимация падения и взлете
 			if (this.velocity >= this._jump) {
 
@@ -132,17 +110,10 @@ bird = {//птица
 		}
 	},
 
-	/**
-	 * Draws bird with rotation to canvas ctx
-	 * 
-	 * @param  {CanvasRenderingContext2D} ctx the context used for
-	 *                                        drawing
-	 */
 	 //CanvasRenderingContext2D ctx используеться для рисования
 	draw: function(ctx) {
 		ctx.save();
 		// переносим ctx систему координат
-		// translate and rotate ctx coordinatesystem
 		ctx.translate(this.x, this.y);
 		ctx.rotate(this.rotation);
 		
@@ -154,32 +125,23 @@ bird = {//птица
 	}
 },
 
-/**
- * The pipes
- */
 pipes = {//трубы
 
 	_pipes: [],
-	// padding: 80, // TODO: Implement paddle variable
 
-	/**
-	 * Empty pipes array
-	 */
+	//пустой массив _pipes
 	reset: function() {
 		this._pipes = [];
 	},
 
-	/**
-	 * Create, push and update all pipes in pipe array
-	 */
-	 //алгоритм создания верхних и нижних труб
+	 //алгоритм создания верхних и нижних труб ввода и ввывода из массив 
 	update: function() {
-		// add new pipe each 100 frames
+		// создание новой трубы каждые 100 frames
 		if (frames % 100 === 0) {
-			// calculate y position
+			// вычисляем позичию y
 			var _y = height - (s_pipeSouth.height+s_fg.height+120+200*Math.random());
 			//sprajt
-			// create and push pipe to array
+			// добавляем в массив трубы
 			this._pipes.push({
 				x: 500,
 				y: _y,
@@ -194,26 +156,24 @@ pipes = {//трубы
 
 				score += p.x === bird.x ? 1 : 0;
 
-				// collision check, calculates x/y difference and
-				// use normal vector length calculation to determine
-				// intersection
+				// проверяем x/y разницу и использовать расчет вектора длины, чтобы определить пересечение
 				var cx  = Math.min(Math.max(bird.x, p.x), p.x+p.width);
 				var cy1 = Math.min(Math.max(bird.y, p.y), p.y+p.height);
 				var cy2 = Math.min(Math.max(bird.y, p.y+p.height+80), p.y+2*p.height+80);
-				// closest difference
+				//находим разницу
 				var dx  = bird.x - cx;
 				var dy1 = bird.y - cy1;
 				var dy2 = bird.y - cy2;
-				// vector length
+				// длина вектора
 				var d1 = dx*dx + dy1*dy1;
 				var d2 = dx*dx + dy2*dy2;
 				var r = bird.radius*bird.radius;
-				// determine intersection
+				// находим пересичение
 				if (r > d1 || r > d2) {
 					currentstate = states.Score;
 				}
 			}
-			// move pipe and remove if outside of canvas
+			// движение труб и удаление их пры выходе за canvas
 			p.x -= 2;
 			if (p.x < -p.width) {
 				this._pipes.splice(i, 1);
@@ -223,12 +183,6 @@ pipes = {//трубы
 		}
 	},
 
-	/**
-	 * Draw all pipes to canvas context.
-	 * 
-	 * @param  {CanvasRenderingContext2D} ctx the context used for
-	 *                                        drawing
-	 */
 	 //рисуем трубы
 	draw: function(ctx) {
 		for (var i = 0, len = this._pipes.length; i < len; i++) {
@@ -239,31 +193,24 @@ pipes = {//трубы
 	}
 };
 
-/**
- * Called on mouse or touch press. Update and change state
- * depending on current game state.
- * 
- * @param  {MouseEvent/TouchEvent} evt tho on press event
- */
  //действие при нажатии
 function onpress(evt) {
 
 	switch (currentstate) {
 
-		// change state and update bird velocity
+		// изменение позиции
 		case states.Splash:
 			currentstate = states.Game;
 			bird.jump();
 			break;
 
-		// update bird velocity
+		// обновление 
 		case states.Game:
 			bird.jump();
 			break;
 
-		// change state if event within okbtn bounding box
 		case states.Score:
-			// get event position
+			
 			var mx = evt.offsetX, my = evt.offsetY;
 
 			if (mx == null || my == null) {
@@ -271,7 +218,7 @@ function onpress(evt) {
 				my = evt.touches[0].clientY;
 			}
 
-			// check if within
+			
 			if (okbtn.x < mx && mx < okbtn.x + okbtn.width &&
 				okbtn.y < my && my < okbtn.y + okbtn.height
 			) {
@@ -284,7 +231,7 @@ function onpress(evt) {
 	}
 }
 
-//старт игры и initiate the game
+//иницыализация игры
  
 function main() {
 	// создаем канвас и set width/height
@@ -313,7 +260,7 @@ function main() {
 	ctx = canvas.getContext("2d");
 
 	currentstate = states.Splash;
-	// append canvas to document
+
 	document.body.appendChild(canvas);//Чтобы DOM-узел был показан на странице
 
 	// интегрируем графику и стиль
@@ -402,7 +349,7 @@ function render() {//загружаем мир
 		s_numberS.draw(ctx, width2-47, height-262, best, null, 10);
 
 	} else {
-		// рисуем очуи
+		// рисуем очки
 		s_numberB.draw(ctx, null, 20, score, width2);
 
 	}

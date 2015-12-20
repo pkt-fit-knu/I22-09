@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<canvas id="canvas" width="2400" height="2400">
+</canvas>
+
+<script>
+var canvas = document.getElementById("canvas");
+var ctx = canvas.getContext("2d");
+ctx.fillStyle = "green";
+
+drawTree();
+
+function drawTree() {
+  drawFace(ctx);
+}
+
+function randomInteger(min, max) {
+  var rand = min + Math.random() * (max - min)
+  rand = Math.round(rand);
+  return rand;
+}
+
+	
+function drawFace(ctx) {
+
+for (i = 0; i < 500; i+=100+randomInteger(-70,200)) {
+
+	for (j = 0; j <1100; j+=220+randomInteger(-70,200)) {
+
+ctx.moveTo(70+i,5+j);
+ctx.lineTo(30+i,40+j);
+ctx.lineTo(110+i,40+j);
+ctx.fill();
+
+ctx.moveTo(70+i,25+j);
+ctx.lineTo(20+i,70+j);
+ctx.lineTo(120+i,70+j);
+ctx.fill();
+
+ctx.moveTo(70+i,45+j);
+ctx.lineTo(10+i,105+j);
+ctx.lineTo(130+i,105+j);
+ctx.fill();
+
+ctx.moveTo(70+i,65+j);
+ctx.lineTo(0+i,145+j);
+ctx.lineTo(140+i,145+j);
+ctx.fill();
+		
+ctx.fillRect(60+i,145+j,18,20);
+
+
+
+		}
+
+	}
+ 
+}
+
+
+
+
+// function drawFace(ctx,i) {
+
+
+// ctx.moveTo(70+i,5+i);
+// ctx.lineTo(30+i,40+i);
+// ctx.lineTo(110+i,40+i);
+// ctx.fill();
+
+// ctx.moveTo(70+i,25+i);
+// ctx.lineTo(20+i,70+i;
+// ctx.lineTo(120+i,70+i);
+// ctx.fill();
+
+// ctx.moveTo(70+i,45+i);
+// ctx.lineTo(10+i,105+i);
+// ctx.lineTo(130+i,105+i);
+// ctx.fill();
+
+// ctx.moveTo(70+i,65+i);
+// ctx.lineTo(0+i,145+i);
+// ctx.lineTo(140+i,145+i);
+// ctx.fill();
+// }
+
+
+
+</script>
+
+</body>
+</html>
