@@ -1,0 +1,18 @@
+INSERT INTO users VALUES (1,"Jessey","Pinkman");
+INSERT INTO listofstaff VALUES (2,"Boiler",2,1);
+INSERT INTO schedule VALUES (2,"mon-fri",2);
+INSERT INTO connector VALUES (1,3);
+INSERT INTO publications VALUES (3,2007,3,14,"About kitchen");
+
+INSERT INTO users VALUES (2,"John","Cena");
+INSERT INTO listofstaff VALUES (1,"Boss",6,2);
+INSERT INTO schedule VALUES (1,"mon-wed",1);
+INSERT INTO connector VALUES (2,1);
+INSERT INTO publications VALUES (1,2007,8,23,"Gotica");
+INSERT INTO publications VALUES (1,2013,5,8,"Modern World!");
+
+INSERT INTO users VALUES (3,"Eric","Cartman");
+INSERT INTO listofstaff VALUES (3,"Clean manager",1,3);
+INSERT INTO schedule VALUES (3,"tue-sat",3);
+INSERT INTO connector VALUES (3,2);
+INSERT INTO publications VALUES (2,0,0,0,NULL);
