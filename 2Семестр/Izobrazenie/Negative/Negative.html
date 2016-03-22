@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Interpolation</title>
+	</head>
+	<body>
+		<canvas id="Canvas2d"></canvas>
+		<script>
+			var can = document.getElementById('Canvas2d');
+			var ctx = can.getContext('2d');
+			var img = new Image();
+			
+			img.onload = function(){
+				can.width = img.width;
+				can.height = img.height;
+				ctx.drawImage(img,0,0,img.width,img.height);
+				// загрузка изображения на холст
+			}
+			
+			can.onclick = function(){
+				var imageData = ctx.getImageData(0,0,can.width,can.height);
+				console.log(imageData);
+				var oldpx = imageData.data;
+				console.log(oldpx);
+				for (var i = 0;i< oldpx.length; i+=4){
+					oldpx[i] = 255 - oldpx[i];    //red
+					oldpx[i+1] = 255 - oldpx[i+1];//green
+					oldpx[i+2] = 255 - oldpx[i+2];//blue
+					oldpx[i+3] = 255;             //alpha прозрачность
+				}
+				ctx.putImageData(imageData,0,0);
+			}
+
+			img.src = 'img.jpg';
+			
+		</script>
+	</body>
+</html>
