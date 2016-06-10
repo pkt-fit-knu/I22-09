@@ -4,7 +4,7 @@
 		<meta charset='utf-8'>
 		<title>Histogram</title>
 		<script>
-			function getHistogram(data){
+			function getHistogram(data){ //получение елиментов rgb
 				hist = { bright : [256], red : [256], blue : [256], green : [256] };
 				for (var i = 0;i<256;i++){
 					hist.bright[i] = 0;
@@ -24,7 +24,7 @@
 				}
 				return hist;
 			}
-			function drawHistogram(context, histarr){
+			function drawHistogram(context, histarr){ //рисуем гистограмму
 				max = {bright : 0, red : 0, blue : 0, green : 0};
 				for (var i = 0;i<256;i++){
 					if (histarr.bright[i] >= max.bright) max.bright = histarr.bright[i];
@@ -39,7 +39,7 @@
 				context.lineTo(555, 300);
 				context.lineTo(555, 0);
 				context.stroke();
-				input = prompt('enter channel 0-red, 1-green, 2-blue, 3-all');
+				input = prompt('enter 3');
 				if (input == 3){
 					context.strokeStyle = 'black';
 					for (var i = 0;i<256; i++){
@@ -51,47 +51,7 @@
 						else
 							context.lineTo(x_diagramm, y_diagramm);
 					}
-					context.stroke();
-				}
-				if (input == 1){
-					context.strokeStyle = 'green';
-					for (var i = 0;i<256; i++){
-						percent = (histarr.green[i] / max.green);
-						x_diagramm = 300 + i;
-						y_diagramm = 300 * (1 - percent);
-						if (i == 0) {
-							context.moveTo(x_diagramm, y_diagramm);
-						}
-						else {
-							context.lineTo(x_diagramm, y_diagramm);
-						}
-					}
-					context.stroke();
-				}
-				if (input == 0){
-					context.strokeStyle = 'red';
-					for (var i = 0;i<256; i++){
-						percent = (histarr.red[i] / max.red);
-						x_diagramm = 300 + i;
-						y_diagramm = 300 * (1 - percent);
-						if (i == 0)
-							context.moveTo(x_diagramm, y_diagramm);
-						else
-							context.lineTo(x_diagramm, y_diagramm);
-					}
-					context.stroke();
-				}
-				if (input == 2){
-					context.strokeStyle = 'blue';
-					for (var i = 0;i<256; i++){
-						percent = (histarr.blue[i] / max.blue);
-						x_diagramm = 300 + i;
-						y_diagramm = 300 * (1 - percent);
-						if (i == 0)
-							context.moveTo(x_diagramm, y_diagramm);
-						else
-							context.lineTo(x_diagramm, y_diagramm);
-					}
+		
 					context.stroke();
 				}
 			}
@@ -115,7 +75,7 @@
 				drawHistogram(ctx, hist_array);
 			}
 			
-			img.src = 'img.jpg';
+			img.src = 'img 2.jpg';
 		</script>
 	</body>
 </html>
