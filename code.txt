@@ -1,9 +1,0 @@
-var1='var1';
-print var1;
-while var1=='var1'{
-print var1;
-var1='var2';
-}
-print var1;
-var2='give me 90 please';
-print var2;

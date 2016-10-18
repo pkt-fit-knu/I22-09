@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Мое домашнее задание</title>
+        <style>
+	        div {
+		        font: 0px;
+		        padding: 10px;
+	        }
+	        .main {
+		        border: 2px solid green;
+	        }
+	        .main > div {
+		        position: relative;
+		        border: 2px solid red;
+	        }
+	        .main > div > div {
+		        display: inline-block;
+		        border: 2px solid blue;
+	        }
+	        .main > div > div > div {
+		        border: 2px solid yellow;
+	        }
+	        .main > div > div > div:first-of-type{
+		        margin-bottom: 5px;
+	        }
+	        .row-3 > div.col-2big > div:first-of-type {
+		        height: 120px;
+	        }
+	        .row-1 {
+		        margin-bottom: 20px;
+	        }
+	        .row-2 {
+		        margin-bottom: 30px;
+	        }
+	        .row-3 {
+		        margin-bottom: 10px;
+	        }
+	        div.row-1 > div {
+		        height: 50px;
+	        }
+	        div.row-2 > div {
+		        height: 10px;
+	        }
+	        div.row-3 > div {
+		        height: 175px;
+	        }
+	        div.row-4 > div {
+		        height: 50px;
+	        }
+	        .col-1 {
+		        width: 20%;
+	        }
+	        .col-2 {
+		        width: 45%;
+	        }
+	        .col-3 {
+		        width: 15%;
+	        }
+	        .col-2small{
+		        width: 20%;
+	        }
+	        .col-2big{
+		        width: 68%;
+	        }
+	    </style>
+    </head>
+    <body>
+		<div class="main">
+			<div class="row-1">
+				<div class="col-1">
+				</div>
+				<div class="col-2">
+				</div>
+				<div class="col-3">
+					<div>
+					</div>
+					<div>
+					</div>
+				</div>
+			</div>
+			<div class="row-2">
+				<div class="col-1">
+				</div>
+				<div class="col-2small">
+				</div>
+				<div class="col-2small">
+				</div>
+				<div class="col-3">
+				</div>
+			</div>
+			<div class="row-3">
+				<div class="col-1">
+				</div>
+				<div class="col-2big">
+					<div>
+					</div>
+					<div>
+					</div>
+				</div>
+			</div>
+			<div class="row-4">
+				<div class="col-1">
+					<div>
+					</div>
+					<div>
+					</div>
+				</div>
+				<div class="col-2">
+				</div>
+				<div class="col-3">
+				</div>
+			</div>
+		</div>
+    </body>
+</html>
