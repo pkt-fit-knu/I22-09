@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Problem 3 of JS-1 lab</title>
+		<style rel="text/stylesheet">
+			label {
+				margin: 10px;
+			}
+			input {
+				margin: 10px;
+			}
+		</style>
+	</head>
+	<body>
+		<form>
+			<label name="radius">Type radius:</label>
+			<input type="text" name="radius" id="input-r">
+			<br>
+			<label name="height">Type height:</label>
+			<input type="text" name="height" id="input-h">
+			<br>
+			<input type="button" name="v" id="submit-v" value="Get V">
+			<input type="button" name="s" id="submit-s" value="Get S">
+		</form>
+		<script type="text/javascript">
+			function getV(){
+				r = +document.getElementById('input-r').value;
+				h = +document.getElementById('input-h').value;
+				v = Math.PI * r * r * h;
+				alert('Your V is ' + v);
+			}
+			function getS(){
+				r = +document.getElementById('input-r').value;
+				h = +document.getElementById('input-h').value;
+				s = 2 * Math.PI * r * (r + h);
+				alert('Your S is ' + s);
+			}
+			document.getElementById('submit-v').onclick = getV;
+			document.getElementById('submit-s').onclick = getS;
+		</script>
+	</body>
+</html>
