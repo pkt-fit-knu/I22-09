@@ -1,0 +1,20 @@
+<!DOCTYPE html> 
+<html> 
+<head> 
+<title>zadacha na obj_2</title> 
+
+
+</head> 
+<body> 
+
+<script type="text/javascript"> 
+var obj1 = {a : 1, b : 2}; 
+var obj2 = Object.create(obj1); 
+obj2.c = 3; 
+obj3 = {}; 
+for (i in obj2) 
+obj3[i] = obj2[i]; 
+console.log(obj3); 
+</script> 
+</body> 
+</html>

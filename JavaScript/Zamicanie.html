@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+</head>
+<body>
+	<script type="text/javascript">	
+
+function Complex(real,imaginary){
+var x=real;
+var y=imaginary;
+
+function Addition(real1, imaginary1){ 
+x = x + real1; 
+y = y + imaginary1; 
+}
+
+function Minus(real1, imaginary1){ 
+x = x - real1; 
+y = y - imaginary1; 
+} 
+function Multiplication(real1, imaginary1){ 
+x = x * real1 - y * imaginary1; 
+y = y * real1 + x * imaginary1; 
+} 
+function Show() 
+{ 
+if (y > 0) 
+console.log(x + "+" + y + "i"); 
+else if (y < 0) 
+console.log(x + "-" + (-y) + "i"); 
+else 
+console.log(x);
+} 
+return { 
+Addition, Minus, Multiplication, Show 
+} 
+} 
+f = Complex(2,1); 
+f.Minus(1,2); 
+f.Show(); 
+f.Multiplication(3, -2); 
+f.Show();
+</script>
+</body>
+</html>

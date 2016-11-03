@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+ 	<title>Function Min & Max </title>
+</head>
+<body>
+	<script type="text/javascript">	
+
+var e = prompt("Введите елементы массива"); 
+var a = e.split(','); 
+
+Array.prototype.max = function() {
+return Math.max.apply(null, this);//для нахождения максимального элемента в числовом массиве
+};
+
+Array.prototype.min = function() {
+return Math.min.apply(null, this);//для нахождения минимального элемента в числовом массиве
+};
+
+var min = Math.min.apply(null, a),
+    max = Math.max.apply(null, a);
+    
+document.write("Елементы массива: "+e+"<br />")
+document.write("Min = "+min+"<br />"+"Max = " + max);
+
+	</script>
+</body>
+</html>

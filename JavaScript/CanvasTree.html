@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<canvas id="myCanvas" width="300" height="200"
+style="border:1px solid #c3c3c3;">
+Your browser does not support the canvas element.
+</canvas>
+
+<script>
+var canvas = document.getElementById("myCanvas");
+var ctx = canvas.getContext("2d");
+
+
+ctx.fillStyle = "green";
+{
+ctx.moveTo(70,5);
+ctx.lineTo(30,40);
+ctx.lineTo(110,40);
+ctx.fill();
+
+ctx.moveTo(70,25);
+ctx.lineTo(20,70);
+ctx.lineTo(120,70);
+ctx.fill();
+
+ctx.moveTo(70,45);
+ctx.lineTo(10,105);
+ctx.lineTo(130,105);
+ctx.fill();
+
+ctx.moveTo(70,65);
+ctx.lineTo(0,145);
+ctx.lineTo(140,145);
+ctx.fill();
+
+}
+
+ctx.fillStyle = "brown";
+{
+ctx.fillRect(60,145,18,20);
+}
+
+
+</script>
+
+</body>
+</html>

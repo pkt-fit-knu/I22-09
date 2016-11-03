@@ -1,0 +1,78 @@
+<html>
+<head>
+<title>Javascript animation</title>
+<style type="text/css">
+body {
+  background:  url(4.jpg);
+    
+}
+</style>
+<script type="text/javascript">
+
+
+
+function CurveMove(xid, yPos, xPos, zTime) {
+      if (!xid) return null
+      if (!yPos) yPos = "x"
+      if (!xPos) xPos = "x"
+      if (!zTime) zTime = 100
+      x = 0
+      setInterval("move('" + xid + "','" + yPos + "','" + xPos + "')",zTime)
+    }
+    function move(xid, yPos, xPos) { 
+      x += 1
+      document.all[xid].style.top = eval(yPos)
+      document.all[xid].style.left = eval(xPos)
+    }
+	CurveMove("img2","480 + 50 * Math.sin(0.05*x)","50+x",30)
+	
+	function LeftMove(xid, yPos, xPos, zTime){
+	if (!xid) return null
+      if (!yPos) yPos = "x"
+      if (!xPos) xPos = "x"
+      if (!zTime) zTime = 100
+      x = 0
+	 
+      setInterval("move1('" + xid + "','" + yPos + "','" + xPos + "')",zTime)
+	}
+	function move1(xid, yPos, xPos){
+	 x += 1
+      //document.all[xid].style.top = eval(yPos)
+      document.all[xid].style.left = eval(xPos)
+	}
+	
+	LeftMove("img","100 + 50 * Math.sin(0.03*x)","50+x",30)
+	
+function DownUpMove(xid, yPos, xPos, zTime){
+	if (!xid) return null
+      if (!yPos) yPos = "x"
+      if (!xPos) xPos = "x"
+      if (!zTime) zTime = 100
+      x = 0
+	 
+      setInterval("move2('" + xid + "','" + yPos + "','" + xPos + "')",zTime)
+	}
+	function move2(xid, yPos, xPos){
+	 x += 1
+      document.all[xid].style.top = eval(yPos)
+      //document.all[xid].style.left = eval(xPos)
+	}
+	
+	DownUpMove("img1","100 + 50 * Math.sin(0.03*x)","50+x",30)
+	
+	
+	
+</script>
+</head>
+
+<body>
+
+<h1>Javascript animation</h1>
+<h2 id="header">Recursive setTimeout-based animation</h2>
+
+<img id="img" src="1.jpg" alt="wars" style="width:304px;height:228px;position: absolute;">
+<img id="img1" src="2.jpg" alt="star" style="width:304px;height:228px;position:absolute;">
+<img id="img2" src="3.jpg" alt="force" style="width:304px;height:228px;position:absolute;">
+
+</body>
+</html>

@@ -1,0 +1,74 @@
+<html>
+<head>
+<title>Javascript animation</title>
+<style type="text/css">
+body {
+  background:#99ccff;
+}
+</style>
+<script type="text/javascript">
+
+var imgObj = null; // object
+var imgObj1 = null;
+var imgObj2 = null;
+var i = 10;
+function Gogogo() {
+	setInterval(doMove,i);
+	setInterval(doMoveDown,20);
+	setInterval(doMoveDiagonal,20);
+}
+function doMove() {
+  imgObj.style.left = parseInt(imgObj.style.left)+5+'px';
+  i++;
+  if (i >= 20)
+  {
+	i=100;
+  }
+  //setTimeout(doMove,20); // call doMove in 20msec
+}
+
+function doMoveDown() {
+	imgObj1.style.top = parseInt(imgObj1.style.top)+5+'px';
+}
+function doMoveDiagonal() {
+	imgObj2.style.left = parseInt(imgObj2.style.left)+5+'px';
+	imgObj2.style.top = parseInt(imgObj2.style.top)+5+'px';
+}
+
+function init() {
+  imgObj = document.getElementById('img'); // get the "foo" object
+  imgObj.style.left = '0px'; // set its initial position to 0px
+  imgObj.style.position= 'absolute';
+  imgObj.style.top = '0px';
+  imgObj.style.visibility='visible'; //hidden
+  
+  imgObj1 = document.getElementById('img1'); // get the "foo" object
+  imgObj1.style.left = '0px'; // set its initial position to 0px
+  imgObj1.style.position= 'absolute';
+  imgObj1.style.top = '0px';
+  imgObj1.style.visibility='visible'; 
+  
+  imgObj2 = document.getElementById('img2'); // get the "foo" object
+  imgObj2.style.left = '0px'; // set its initial position to 0px
+  imgObj2.style.position= 'absolute';
+  imgObj2.style.top = '0px';
+  imgObj2.style.visibility='visible'; 
+
+  //doMove(); // start animating
+  Gogogo();
+}
+
+
+window.onload = init;
+
+</script>
+</head>
+
+<body>
+ 
+<img id="img" src="3.png" alt="obj" style="width:304px;height:228px;">
+<img id="img1" src="3.png" alt="obj1" style="width:304px;height:228px;">
+<img id="img2" src="3.png" alt="obj2" style="width:304px;height:228px;">
+
+</body>
+</html>

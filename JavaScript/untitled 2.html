@@ -1,0 +1,44 @@
+<DOCTYPE html!>
+<head>
+	<meta charset="utf-8"/>
+</head>
+<body>
+<button onclick = start()>
+	Click
+</button>
+<script>
+function start()
+{
+var a = {
+id : "1",
+name : "name",
+p_a : "a"
+
+};
+var b = {
+id : "1",
+name : "name",
+p_b : "b" 
+};
+console.log(a);
+console.log(b);
+
+for(ob_a in a ){
+flag = false;
+for(ob_b in b){
+
+if(ob_a == ob_b)
+flag = true;
+}
+if(!flag){
+// console.log(ob_a);
+delete a[ob_a];
+}
+}
+console.log(a);
+
+}
+</script>
+
+</body> 
+</html>

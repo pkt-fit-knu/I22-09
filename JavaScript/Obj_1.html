@@ -1,0 +1,36 @@
+<!DOCTYPE html> 
+<html> 
+<head> 
+<title>zadacha na obj_1</title> 
+
+
+</head> 
+<body> 
+
+<script type="text/javascript"> 
+var firstObj = { 
+name : "first", 
+id : 10, 
+property : "some", 
+color : "yellow" 
+}; 
+var secondObj = { 
+name : "second", 
+language : "english", 
+id : 15 
+}; 
+for (i in firstObj) 
+{ 
+var flag = 0; 
+for (j in secondObj) 
+{ 
+if (i == j) 
+flag = 1; 
+} 
+if (flag == 1) 
+delete(firstObj[i]); 
+} 
+console.log(firstObj); 
+</script> 
+</body> 
+</html>

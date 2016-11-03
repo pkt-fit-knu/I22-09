@@ -1,0 +1,18 @@
+
+<!DOCTYPE html>
+<html>
+<body onload="draw();">
+<canvas id="canvas" width="210" height="277" style="border:15px solid red;"></canvas>
+<script>
+function draw() {
+var ctx = document.getElementById('canvas').getContext('2d');
+var img = new Image();
+
+img.onload = function() {
+ctx.drawImage(img,0,0);
+	};
+img.src = 'pic_the_scream.jpg';
+	}
+</script>
+</body>
+</html>

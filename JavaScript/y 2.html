@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>laba</title>
+		<meta charset="utf-8">
+		<style>
+			div {
+				width:50px;
+				height: 50px;
+				border-radius: 100%;
+				background-color: gray;
+				border: 1px solid black;
+				position: absolute;
+			}
+			#win {
+				position: absolute;
+				left:225px;
+				top:300px;
+				font-size:15px;
+			}
+		</style>
+		<script type="text/javascript">
+			function start()
+			{
+				var o1 = document.getElementById("one");
+				var o2 = document.getElementById("two");
+				var o3 = document.getElementById("three");
+				var o4 = document.getElementById("four");
+				
+
+
+				function animate(x, a0, s, d)
+				{
+					var alpha = a0;
+					var x0 = 250;
+					var y0 = 250;
+					var R = 100;
+					var tx, ty;
+					var interv = setInterval(function(){
+						alpha+=0.01*s;
+						R--;
+						if (R<10) R= 100+d;
+						tx = x0 + Math.cos(alpha)*R;
+						ty = y0 + Math.sin(alpha)*R;
+						x.style.left = tx + 'px';
+						x.style.top = ty + 'px';
+					},10);
+				}
+				animate(o1,0,3,3,2);
+				animate(o2,1,6,2,2);
+				animate(o3,2,7,3,8);
+				animate(o4,3,8,2,1);
+			}
+		</script>
+	</head>
+	<body onload="start();">
+		<div id="one"></div>
+		<div id="two"></div>
+		<div id="three"></div>
+		<div id="four"></div>
+		
+	</body>
+</html>

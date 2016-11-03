@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>romyni american gorki</title>
+		<style>
+			* {
+				margin: 0px;
+			}
+			h1 {
+				position: absolute;
+				left: 900px;
+				top: 600px;
+			}
+			#paravoz {
+				position: absolute;
+				transform-origin:0% 0%;
+				width: 40px;
+				height: 40px;
+			}
+		</style>
+		<script>
+			
+			function f()
+			{
+				var context = document.getElementById('canvas').getContext('2d');
+				
+				
+				context.strokeStyle = 'black';
+				var n = 1000;
+				var xs = []; var ys = [];
+				for (var i = 0;i<n;i++){
+					xs[i] = i;
+					if (i == 0) ys[i] = 400;
+					else if (i<100) ys[i] = ys[i-1]+1;
+					else if (i<500) ys[i] = ys[i-3]-2;
+					else ys[i] = ys[i-1]+1;
+				}
+				context.moveTo(xs[0],ys[0]);
+				for (var i = 1;i<n;i++)
+					context.lineTo(xs[i],ys[i]);
+				context.stroke();
+				
+				var paravoz = document.getElementById("paravoz");
+				var index = 0;
+				var v = 1;
+				var a = 1;
+				var timer = setInterval(function(){
+					paravoz.style.top = (ys[index]-40)+'px';
+					paravoz.style.left = (xs[index])+'px';
+					if (ys[index+1]-ys[index]>0)	a = 2; else a = -20;
+					v += a;
+					if (v<1) v = 1;
+					index += v;
+					if (index == n) 
+						clearInterval(timer);
+				},10);
+			}
+		</script>
+	</head>
+	<body onload="f()">
+		<h1>to hell</h1>
+		<canvas id="canvas" width="1000" height="700">
+		</canvas>
+		<img id="paravoz" src="por.png">
+	</body>
+</html>

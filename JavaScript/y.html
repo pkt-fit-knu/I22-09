@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>laba</title>
+		<style>
+			div {
+				width:50px;
+				height: 50px;
+				position: absolute;
+			}
+			#one {
+				border-radius: 100%;
+				left:0px;
+				top:0px;
+				background-color:red;
+			}
+			#two {
+				border-radius: 100%;
+				left:500px;
+				top:0px;
+				background-color: yellow;
+			}
+			#three{
+				border-radius: 100%;
+				left:0px;
+				top:500px;
+				background-color: blue;
+			}
+			#four{
+				border-radius: 100%;
+				left:500px;
+				top:500px;
+				background-color: green;
+			}
+			#win {
+				position: absolute;
+				left:225px;
+				top:300px;
+				display: none;
+				font-size:25px;
+			}
+		</style>
+		<script type="text/javascript">
+			function start()
+			{
+				var o1 = document.getElementById("one");
+				var o2 = document.getElementById("two");
+				var o3 = document.getElementById("three");
+				var o4 = document.getElementById("four");
+
+				function animate(x,x0,y0,v1,v2,p)
+				{
+					var posx = x0;
+					var posy = y0;
+					var interv = setInterval(function(){
+						posx+=v1;
+						posy+=v2;
+						x.style.left=posx + 'px';
+						x.style.top=posy + 'px';
+						if (p(posx)<1){ 
+							clearInterval(interv);
+							document.getElementById("win").style.display='block';
+						}
+					},10);
+				}
+				animate(o1,0,0,1,1,function(y){
+					if (y>=225) return 0;
+					else return 1;
+				});
+				animate(o2,500,0,-1,1,function(y){
+					if(y<=275) return 0;
+					else return 1;
+				});
+				animate(o3,0,500,1,-1,function(y){
+					if(y>=225) return 0;
+					else return 1;
+				});
+				animate(o4,500,500,-1,-1,function(y){
+					if(y<=275) return 0;
+					else return 1;
+				});
+			}
+		</script>
+	</head>
+	<body onload="start();">
+		<div id="one"></div>
+		<div id="two"></div>
+		<div id="three"></div>
+		<div id="four"></div>
+	</body>
+</html>

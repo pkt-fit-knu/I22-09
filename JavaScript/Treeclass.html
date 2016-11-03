@@ -1,0 +1,51 @@
+<!DOCTYPE html> 
+<html> 
+<body> 
+
+
+<svg id ="picture" height="400" width="400"> 
+</svg> 
+
+<script> 
+
+
+var color = ["green","lime","brown"]; 
+
+
+function DrawTree (a, b, c) 
+{ 
+
+var Tree = document.getElementById("picture"); 
+
+var Vetka = document.createElementNS("http://www.w3.org/2000/svg", "polygon"); 
+Vetka.setAttribute("points","180,0 200,30 160,30"); 
+Vetka.style.fill="lime"; 
+Tree.appendChild(Vetka); 
+
+var Vetka1 = document.createElementNS("http://www.w3.org/2000/svg", "polygon"); 
+Vetka1.setAttribute("points","180,30 210,60 150,60"); 
+Vetka1.style.fill="green"; 
+Tree.appendChild(Vetka1); 
+
+var Vetka2 = document.createElementNS("http://www.w3.org/2000/svg", "polygon"); 
+Vetka2.setAttribute("points","180,60 220,90 140,90"); 
+Vetka2.style.fill="lime"; 
+Tree.appendChild(Vetka2); 
+
+var Vetka3 = document.createElementNS("http://www.w3.org/2000/svg", "polygon"); 
+Vetka3.setAttribute("points","180,90 230,120 130,120"); 
+Vetka3.style.fill="green"; 
+Tree.appendChild(Vetka3); 
+
+var stolb = document.createElementNS("http://www.w3.org/2000/svg", "polygon"); 
+stolb.setAttribute("points","175,130 185,130 185,120 175,120"); 
+stolb.style.fill="brown"; 
+Tree.appendChild(stolb); 
+
+} 
+
+window.onload=DrawTree; 
+</script> 
+
+</body> 
+</html>

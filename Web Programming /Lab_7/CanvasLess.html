@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<canvas id="canvas" width="2400" height="2400">
+</canvas>
+
+<script>
+var canvas = document.getElementById("canvas");
+var ctx = canvas.getContext("2d");
+ctx.fillStyle = "green";
+
+var x = prompt("Skolko simvolov v tvoem imenni");
+var num1 = parseInt(x)
+
+drawTree();
+
+function drawTree() {
+  drawFace(ctx);
+}
+
+function randomInteger(min, max) {
+  var rand = min + Math.random() * (max - min)
+  rand = Math.round(rand);
+  return rand;
+}
+
+
+function drawFace(ctx) {
+
+for (i = 0; i < 50; i+= num1+randomInteger(1,5)) {
+
+	for (j = 0; j < 40; j+= num1+randomInteger(1,5)) {
+
+ctx.moveTo(70+i,5+j);
+ctx.lineTo(30-i,40+j);
+ctx.lineTo(110+i,40-j);
+ctx.fill();
+
+
+		}
+
+	}
+
+}
+
+
+</script>
+
+</body>
+</html>

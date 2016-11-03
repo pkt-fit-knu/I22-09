@@ -1,0 +1,35 @@
+<DOCTYPE html!>
+<head>
+	<meta charset="utf-8"/>
+</head>
+<body>
+<p id="title"> 11.236 </p>
+<input id="start" type="button" value="clickme" onclick="test()" />
+
+<script type="text/javascript">
+function test()
+{
+
+var x = [3,4,5,6,7,8,9];
+var s = [];
+for (var i = 0; i < x.length; i++) 
+{
+
+if ((x[i]%2)!=0)
+{
+	s += x[i]*+x[i];
+}	
+else
+{
+	s +=','+x[i]*+2+',';
+} 
+
+}
+alert (s);
+
+} 
+
+</script>
+
+</body> 
+</html>
