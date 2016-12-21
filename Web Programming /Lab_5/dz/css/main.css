@@ -1,0 +1,24 @@
+body{
+  background: white;
+}
+.exit{
+  background: green;
+  position: absolute;
+  width: 400px;
+  top: 50%;
+  left: 50%;
+  margin-left: -200px;
+  border-radius: 10px;
+  text-align: center;
+  color: white;
+  font-size: 18px;
+}
+.cost{
+  display: none;
+}
+.center{
+  position: absolute;
+  top:2%;
+  left:50%;
+margin-left: -100px;
+}

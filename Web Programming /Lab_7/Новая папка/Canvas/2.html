@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  </head>
+  <body>
+    <canvas id="main" width="600px" height="600px" style="border: 1px solid black; background: green;">
+	</canvas>
+	<script type="text/javascript">
+		function randPoint(width, height){
+			return {'x': Math.random()*width, 'y': Math.random()*height};
+		}
+		var canvas = document.getElementById('main');
+		var ctx = canvas.getContext("2d");
+		var N = 'SuprunovVladyslav'.length;
+		for (var i=0; i<N; i++){
+			p = randPoint(600, 600);
+			if (i == 0){
+				ctx.moveTo(p.x, p.y);
+			} else {
+				ctx.lineTo(p.x, p.y);
+			}
+		}
+		var p1 = randPoint(600, 600);
+		var p2 = randPoint(600, 600);
+		console.log(p1);
+		console.log(p2);
+		ctx.stroke();
+		setTimeout(function (){
+			ctx.clearRect(p1.x, p1.y, p2.x, p2.y);
+		}, 2000);
+	</script>
+  </body>
+</html>
